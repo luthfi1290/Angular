@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Author List</div>
+        <div class="panel-body">
+          <app-add></app-add>
+          <br><br>
+          <table class="table table-striped">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+            <tr *ngFor="let author of authors">
+              <td> {{ author.name }}</td>
+              <td> {{ author.email }} </td>
+              <td>
+                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal2" (click)="getAuthorId(author.id)">
+                  <span class="glyphicon glyphicon-edit"></span>
+                </a>
+                <a class="btn btn-danger btn-xs" (click)="deleteThisAuthor(author.id)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="author">
+  <app-edit [one]="author"></app-edit>
+</div>
